@@ -10,7 +10,7 @@ const { Content } = Layout;
 
 class Index extends React.Component {
 	state = {
-		step: 3,
+		step: 1,
 		data: {}
 	}
 
