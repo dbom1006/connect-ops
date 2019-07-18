@@ -1,0 +1,17 @@
+.container {
+    padding: 40px 25%;
+    text-align: center;
+
+    .ant-upload.ant-upload-drag p.ant-upload-drag-icon {
+        margin-bottom: 16px;
+    }
+
+    .upload {
+        margin: 20px 40px;
+        width: auto;
+
+        .ant-upload.ant-upload-drag .ant-upload-btn{
+            padding: 32px 0;
+        }
+    }
+}
