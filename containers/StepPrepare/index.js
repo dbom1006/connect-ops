@@ -3,6 +3,7 @@ import Title from 'antd/lib/typography/Title';
 import "./styles.scss";
 
 import { Modal, Button, Table } from 'antd';
+import { deploy } from '../../api';
 const { confirm } = Modal;
 
 class StepPrepare extends React.Component {
@@ -20,11 +21,12 @@ class StepPrepare extends React.Component {
 			style: {
 				left: 100
 			},
-			onOk: () => this.props.nextStep(3, { file, preview })
+			onOk: async() =>{
+				await deploy();
+				this.props.nextStep(3, { file, preview })
+			} 
 		});
 	}
-
-
 
 	render() {
 		const { file = {}, preview = [] } = this.props;

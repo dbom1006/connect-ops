@@ -2,8 +2,9 @@ import React from 'react';
 import Title from 'antd/lib/typography/Title';
 import "./styles.scss";
 
-import { Upload, Icon, Button } from 'antd';
+import { Upload, Icon, Button, message } from 'antd';
 import { csvFileToJSON } from '../../helper/tools';
+import { uploadFile } from '../../api';
 
 const { Dragger } = Upload;
 
@@ -29,8 +30,10 @@ class StepWelcome extends React.Component {
 	uploadFile = async () => {
 		const { file } = this.state;
 		this.setState({ isLoading: true });
-		await new Promise((res, rej) => setTimeout(() => res(), 500));
 		const preview = await csvFileToJSON(file.originFileObj);
+		const result = await uploadFile(file.originFileObj);
+		this.setState({ isLoading: false });
+		if(!result) return message.error("Upload CSV file failed.");
 		this.props.nextStep(2, { file, preview });
 	}
 

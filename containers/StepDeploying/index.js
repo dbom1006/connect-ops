@@ -2,7 +2,8 @@ import React from 'react';
 import Title from 'antd/lib/typography/Title';
 import "./styles.scss";
 
-import { Modal, Button, Table, Icon, Tag } from 'antd';
+import { Button, Table, Icon, Tag } from 'antd';
+import { getStatus } from '../../api';
 
 class StepDeploying extends React.Component {
 	state = {
@@ -17,8 +18,8 @@ class StepDeploying extends React.Component {
 	fetchData = async () => {
 		this.setState({ loading: true });
 		await new Promise((res) => setTimeout(() => res(), 500));
-		const res = await fetch('/static/dummy/fake-data.json').then(x => x.json());
-		this.setState({ loading: false, data: res.Workspaces });
+		const res = await getStatus();
+		this.setState({ loading: false, data: res.data.Workspaces });
 	}
 
 	columns = [
