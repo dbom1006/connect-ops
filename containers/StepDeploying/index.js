@@ -13,6 +13,10 @@ class StepDeploying extends React.Component {
 
 	componentDidMount = () => {
 		this.fetchData();
+		this.autoRefresh = setInterval(()=>this.fetchData(),60*1000);
+	}
+	componentWillUnmount =()=>{
+		clearInterval(this.autoRefresh);
 	}
 
 	fetchData = async () => {
