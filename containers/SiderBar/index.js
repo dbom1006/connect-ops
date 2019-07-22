@@ -13,6 +13,7 @@ export const SiderBar = () => {
 		}}>
 			<div className="logo" >
 				<img src="/static/images/logo.png"></img>
+				<img src="/static/images/logo1.png"></img>
 			</div>
 			<Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
 				<Menu.Item key="1">
