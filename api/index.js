@@ -7,8 +7,8 @@ const axios = Axios.default.create({
 	}
 });
 
-// const API_URL = 'http://localhost:8000';
-const API_URL = 'https://api-connect-ops.herokuapp.com';
+const API_URL = 'http://localhost:8000';
+// const API_URL = 'https://api-connect-ops.herokuapp.com';
 const API_UPLOAD = API_URL + '/upload';
 const API_DEPLOY = API_URL + '/workspace/lauch';
 const API_STATUS = API_URL + '/workspace/description';
@@ -17,8 +17,8 @@ const API_STATUS = API_URL + '/workspace/description';
 export const uploadFile = async (file) => {
 	try {
 		const form = new FormData();
-		form.append('file',file,"create-workspaces.csv");
-		form.append('fileType',file.type);
+		form.append('file', file, "create-workspaces.csv");
+		form.append('fileType', file.type);
 		const result = await axios.post(API_UPLOAD, form)
 		return result;
 	}
@@ -28,7 +28,7 @@ export const uploadFile = async (file) => {
 	}
 }
 
-export const deploy = async ()=>{
+export const deploy = async () => {
 	try {
 		const result = await axios.post(API_DEPLOY)
 		return result;
@@ -39,9 +39,9 @@ export const deploy = async ()=>{
 	}
 }
 
-export const getStatus = async ()=>{
+export const getStatus = async (filter) => {
 	try {
-		const result = await axios.get(API_STATUS)
+		const result = await axios.post(API_STATUS, { filter })
 		return result;
 	}
 	catch (error) {

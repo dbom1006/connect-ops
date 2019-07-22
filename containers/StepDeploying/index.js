@@ -16,10 +16,11 @@ class StepDeploying extends React.Component {
 	}
 
 	fetchData = async () => {
+		const { preview } = this.props;
 		this.setState({ loading: true });
 		await new Promise((res) => setTimeout(() => res(), 500));
-		const res = await getStatus();
-		this.setState({ loading: false, data: res.data.Workspaces });
+		const res = await getStatus(preview);
+		this.setState({ loading: false, data: res.data });
 	}
 
 	columns = [

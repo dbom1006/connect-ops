@@ -33,7 +33,7 @@ class Index extends React.Component {
 								{step == 2 && <StepPrepare {...data} nextStep={this.nextStep} />}
 							</TabPane>
 							<TabPane tab="Deploying - Status" key="3" disabled={step < 3}>
-								{step == 3 && <StepDeploying />}
+								{step == 3 && <StepDeploying  {...data} />}
 							</TabPane>
 						</Tabs>
 					</Content>
