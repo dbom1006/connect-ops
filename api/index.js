@@ -7,8 +7,8 @@ const axios = Axios.default.create({
 	}
 });
 
-const API_URL = 'http://localhost:8000';
-// const API_URL = 'https://api-connect-ops.herokuapp.com';
+// const API_URL = 'http://localhost:8000';
+const API_URL = 'https://api-connect-ops.herokuapp.com';
 const API_UPLOAD = API_URL + '/upload';
 const API_DEPLOY = API_URL + '/workspace/lauch';
 const API_STATUS = API_URL + '/workspace/description';
