@@ -1,5 +1,5 @@
 import { Layout, Menu, Icon } from 'antd';
-
+import Router from 'next/router';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 
@@ -9,34 +9,25 @@ export const SiderBar = () => {
 			overflow: 'auto',
 			height: '100vh',
 			position: 'fixed',
+			background: 'rgba(28,89,102)',
 			left: 0,
 		}}>
 			<div className="logo" >
-				<img src="/static/images/logo.png"></img>
-				<img src="/static/images/logo1.png"></img>
+				<img src="/static/images/logo-new.png"></img>
+				{/* <img src="/static/images/logo1.png"></img> */}
+				<h1>PROVISION</h1>
 			</div>
 			<Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-				<Menu.Item key="1">
-					<Icon type="pie-chart" />
-					<span>Option 1</span>
+				<Menu.Item key="1" onClick={() => Router.push('/')} >
+					<span>Create</span>
 				</Menu.Item>
-				<Menu.Item key="2">
-					<Icon type="desktop" />
-					<span>Option 2</span>
+				<Menu.Item key="2" onClick={() => Router.push('/inventory')}>
+					<span>Inventory</span>
 				</Menu.Item>
-				<SubMenu
-					key="sub1"
-					title={
-						<span>
-							<Icon type="team" />
-							<span>Team</span>
-						</span>
-					}
-				>
-					<Menu.Item key="6">Team 1</Menu.Item>
-					<Menu.Item key="8">Team 2</Menu.Item>
-				</SubMenu>
 			</Menu>
+			<div className="logo-footer">
+				<img src="/static/images/logo-footer.png"></img>
+			</div>
 		</Sider>
 	)
 }

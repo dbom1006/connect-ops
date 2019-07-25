@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Tabs } from 'antd';
+import { Layout, Tabs, Icon } from 'antd';
 import { SiderBar } from "../containers/SiderBar";
 import StepWelcome from '../containers/StepWelcome';
 import StepPrepare from '../containers/StepPrepare';
@@ -24,15 +24,30 @@ class Index extends React.Component {
 			<Layout>
 				<SiderBar />
 				<div style={{ marginLeft: 200, width: 'calc(100% - 200px)' }}>
-					<Content style={{ margin: '16px' }}>
+					<Content style={{ margin: '16px auto', width: "80%" }}>
 						<Tabs size="large" className="tab-steps" activeKey={step.toString()} onTabClick={(tab) => this.setState({ step: tab })}>
-							<TabPane tab="Welcome" key="1">
+							<TabPane tab={
+								<span className="step-1">
+									Ingest
+									<Icon type="cloud-upload" />
+								</span>
+							} className="step-1" key="1">
 								{step == 1 && <StepWelcome nextStep={this.nextStep} />}
 							</TabPane>
-							<TabPane tab="Prepare to deploy" key="2" disabled={step < 2}>
+							<TabPane tab={
+								<span className="step-3">
+									Provision
+									<Icon type="play-circle" />
+								</span>
+							} className="step-2" key="2" disabled={!data.preview}>
 								{step == 2 && <StepPrepare {...data} nextStep={this.nextStep} />}
 							</TabPane>
-							<TabPane tab="Deploying - Status" key="3" disabled={step < 3}>
+							<TabPane className="step-3" tab={
+								<span className="step-3">
+									Track
+								<Icon type="eye" />
+								</span>
+							} key="3" disabled={!data.preview}>
 								{step == 3 && <StepDeploying  {...data} />}
 							</TabPane>
 						</Tabs>

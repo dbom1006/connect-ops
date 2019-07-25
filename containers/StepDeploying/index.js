@@ -13,9 +13,9 @@ class StepDeploying extends React.Component {
 
 	componentDidMount = () => {
 		this.fetchData();
-		this.autoRefresh = setInterval(()=>this.fetchData(),60*1000);
+		this.autoRefresh = setInterval(() => this.fetchData(), 60 * 1000);
 	}
-	componentWillUnmount =()=>{
+	componentWillUnmount = () => {
 		clearInterval(this.autoRefresh);
 	}
 
@@ -41,16 +41,16 @@ class StepDeploying extends React.Component {
 		}, {
 			title: 'State',
 			dataIndex: 'State',
-			render: (value) => <Tag color={value == "AVAILABLE" ? "green" : "gold"}>{value}</Tag>
-		}, {
-			title: 'SubnetId',
-			dataIndex: 'SubnetId',
-		}, {
-			title: 'IpAddress',
-			dataIndex: 'IpAddress',
-		}, {
-			title: 'BundleId',
-			dataIndex: 'BundleId',
+			render: (value) => {
+				let color = "green";
+				switch(value){
+					case 'AVAILABLE': color="green"; break;
+					case 'PENDING': color="gold"; break;
+					case 'ERROR':
+					case 'FAILED': color="volcano"; break;
+				}
+				return <Tag color={color}>{value}</Tag>
+			}
 		}
 	]
 
